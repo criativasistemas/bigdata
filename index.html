@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container-custom {
+            max-width: 80%;
+            background-color: rgb(88, 216, 236, 0.5) ;
+        }
+    </style>
+    <!-- JQuery para autocomplete -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+    <div class="container container-custom mt-5">
+        <h2 class="text-center">Cadastro de Dados de Crianças com TEA e Apraxia</h2>
+        <form action="inserir_dados.php" method="post" class="mt-4">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome da Criança:</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="idade" class="form-label">Idade da Criança:</label>
+                <input type="number" class="form-control" id="idade" name="idade" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="genero" class="form-label">Gênero:</label>
+                <select class="form-select" id="genero" name="genero" required>
+                    <option value="">Selecione</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="nivel_escolaridade" class="form-label">Nível de Escolaridade da Criança:</label>
+                <select class="form-select" id="nivel_escolaridade" name="nivel_escolaridade" required>
+                    <option value="">Selecione</option>
+                    <option value="Educação Infantil">Educação Infantil</option>
+                    <option value="Ensino Fundamental I">Ensino Fundamental I</option>
+                    <option value="Ensino Fundamental II">Ensino Fundamental II</option>
+                    <option value="Ensino Médio">Ensino Médio</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="renda_familiar" class="form-label">Renda Familiar:</label>
+                <select class="form-select" id="renda_familiar" name="renda_familiar" required>
+                    <option value="">Selecione</option>
+                    <option value="Até R$ 2.640,00 (Classe E)">Até R$ 2.640,00 (Classe E)</option>
+                    <option value="De R$ 2.641,00 até R$ 4.400,00 (Classe D)">De R$ 2.641,00 até R$ 4.400,00 (Classe D)</option>
+                    <option value="De R$ 4.401,00 até R$ 9.680,00 (Classe C)">De R$ 4.401,00 até R$ 9.680,00 (Classe C)</option>
+                    <option value="De R$ 9.681,00 até R$ 17.600,00 (Classe B)">De R$ 9.681,00 até R$ 17.600,00 (Classe B)</option>
+                    <option value="Acima de R$ 17.600,00 (Classe A)">Acima de R$ 17.600,00 (Classe A)</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="emprego_pais" class="form-label">Situação de Emprego dos Responsáveis:</label>
+                <select class="form-select" id="emprego_pais" name="emprego_pais" required>
+                    <option value="">Selecione</option>
+                    <option value="Empregado">Empregado</option>
+                    <option value="Desempregado">Desempregado</option>
+                    <option value="Autônomo">Autônomo</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+
+            <!-- Diagnóstico de TEA e Nível de Suporte Unificado -->
+            <div class="mb-3">
+                <label for="diagnostico_tea" class="form-label">Diagnóstico de TEA e Nível de Suporte:</label>
+                <select class="form-select" id="diagnostico_tea" name="diagnostico_tea" required>
+                    <option value="">Selecione</option>
+                    <option value="Não">Não</option>
+                    <option value="Sim, Nível 1 (Suporte leve)">Sim, Nível 1 (Suporte leve)</option>
+                    <option value="Sim, Nível 2 (Suporte moderado)">Sim, Nível 2 (Suporte moderado)</option>
+                    <option value="Sim, Nível 3 (Suporte intenso)">Sim, Nível 3 (Suporte intenso)</option>
+                </select>
+            </div>
+
+            <!-- Diagnóstico de Apraxia e Nível Unificado -->
+            <div class="mb-3">
+                <label for="diagnostico_apraxia" class="form-label">Diagnóstico de Apraxia e Nível:</label>
+                <select class="form-select" id="diagnostico_apraxia" name="diagnostico_apraxia" required>
+                    <option value="">Selecione</option>
+                    <option value="Não">Não</option>
+                    <option value="Sim, Leve">Sim, Leve</option>
+                    <option value="Sim, Moderado">Sim, Moderado</option>
+                    <option value="Sim, Severo">Sim, Severo</option>
+                </select>
+                <small class="form-text text-muted">
+                    Apraxia é uma condição neurológica que afeta a capacidade de realizar movimentos coordenados, como falar ou caminhar.
+                </small>
+            </div>
+
+            <div class="mb-3">
+                <label for="acesso_tratamento" class="form-label">Acesso a Tratamento:</label>
+                <select class="form-select" id="acesso_tratamento" name="acesso_tratamento" required>
+                    <option value="">Selecione</option>
+                    <option value="Sim, particular">Sim, particular</option>
+                    <option value="Sim, público">Sim, público</option>
+                    <option value="Não">Não</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="tipo_terapia" class="form-label">Tipo de Terapia:</label>
+                <div id="tipo_terapia">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terapia_ocupacional" name="tipo_terapia[]" value="Terapia Ocupacional">
+                        <label class="form-check-label" for="terapia_ocupacional">
+                            Terapia Ocupacional
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="fonoaudiologia" name="tipo_terapia[]" value="Fonoaudiologia">
+                        <label class="form-check-label" for="fonoaudiologia">
+                            Fonoaudiologia
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="psicoterapia" name="tipo_terapia[]" value="Psicoterapia">
+                        <label class="form-check-label" for="psicoterapia">
+                            Psicoterapia
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="fisioterapia" name="tipo_terapia[]" value="Fisioterapia">
+                        <label class="form-check-label" for="fisioterapia">
+                            Fisioterapia
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="outros" name="tipo_terapia[]" value="Outros">
+                        <label class="form-check-label" for="outros">
+                            Outros
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="bairro" class="form-label">Municipio:</label>
+                <input type="text" class="form-control" id="bairro" name="bairro" required autocomplete="off">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para autocomplete de bairros -->
+    <script>
+        $(document).ready(function(){
+            var bairrosRJ = [
+    "Angra dos Reis", "Aperibé", "Araruama", "Areal", "Armação dos Búzios", "Arraial do Cabo", "Barra do Piraí", "Barra Mansa", "Belford Roxo", "Bom Jardim", "Bom Jesus do Itabapoana", "Cabo Frio", "Cachoeiras de Macacu", "Cambuci", "Campos dos Goytacazes", "Cantagalo", "Carapebus", "Cardoso Moreira", "Carmo", "Casimiro de Abreu", "Comendador Levy Gasparian", "Conceição de Macabu", "Cordeiro", "Duas Barras", "Duque de Caxias", "Engenheiro Paulo de Frontin", "Guapimirim", "Iguaba Grande", "Itaboraí", "Itaguaí", "Italva", "Itaocara", "Itaperuna", "Itatiaia", "Japeri", "Laje do Muriaé", "Macaé", "Macuco", "Magé", "Mangaratiba", "Maricá", "Mendes", "Mesquita", "Miguel Pereira", "Miracema", "Natividade", "Nilópolis", "Niterói", "Nova Friburgo", "Nova Iguaçu", "Paracambi", "Paraíba do Sul", "Paraty", "Paty do Alferes", "Petrópolis", "Pinheiral", "Piraí", "Porciúncula", "Porto Real", "Quatis", "Queimados", "Quissamã", "Resende", "Rio Bonito", "Rio Claro", "Rio das Flores", "Rio das Ostras", "Rio de Janeiro", "Santa Maria Madalena", "Santo Antônio de Pádua", "São Fidélis", "São Francisco de Itabapoana", "São Gonçalo", "São João da Barra", "São João de Meriti", "São José de Ubá", "São José do Vale do Rio Preto", "São Pedro da Aldeia", "São Sebastião do Alto", "Sapucaia", "Saquarema", "Seropédica", "Silva Jardim", "Sumidouro", "Tanguá", "Teresópolis", "Trajano de Moraes", "Três Rios", "Valença", "Varre-Sai", "Vassouras", "Volta Redonda"
+];
+
+            $("#bairro").autocomplete({
+                source: bairrosRJ
+            });
+        });
+    </script>
+</body>
+</html>
